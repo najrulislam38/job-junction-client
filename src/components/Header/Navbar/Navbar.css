@@ -2,3 +2,6 @@
   font-size: 16px;
   font-weight: 500;
 }
+.navLinks a:hover {
+  color: #0870a1;
+}

@@ -1,7 +1,11 @@
+import JoinedUsByCategory from "../JoinedUsByCategory/JoinedUsByCategory";
+import OurAuthor from "../OurAuthor/OurAuthor";
+
 const Home = () => {
   return (
     <div>
-      <h1>home page</h1>
+      <OurAuthor></OurAuthor>
+      <JoinedUsByCategory></JoinedUsByCategory>
     </div>
   );
 };

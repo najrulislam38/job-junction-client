@@ -1,0 +1,15 @@
+.shopCard h3 {
+  transition: 0.2s;
+}
+
+.shopCard:hover h3 {
+  color: #008fd4;
+}
+
+.shopCard img {
+  transition: 0.5s;
+}
+
+.shopCard:hover img {
+  transform: scale(1.2);
+}
