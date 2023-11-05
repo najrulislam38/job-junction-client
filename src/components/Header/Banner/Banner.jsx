@@ -26,11 +26,20 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <img
-          src={developer}
-          alt=""
-          className="hidden md:block md:w-1/3 object-cover"
-        />
+        <div className="hidden md:block md:w-1/3 relative">
+          <img src={developer} alt="" className="w-full h-full object-cover" />
+          <div className=" absolute bottom-10 right-0 p-3 rounded-full bg-slate-400 bg-opacity-60 flex gap-3 items-center  ">
+            <img
+              src={developer}
+              alt=""
+              className="w-14 rounded-full bg-white  "
+            />
+            <div className="text-white">
+              <p className="text-sm font-medium">@liyo.developer345</p>
+              <h3 className="font-bold">Web Developer</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
