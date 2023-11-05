@@ -1,8 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import "./Navbar.css";
+import useAuth from "../../../hooks/useAuth";
+import userImg from "../../../assets/images/user.png";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
   const navLinks = (
     <>
       <li>
@@ -47,6 +51,17 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Sign Out successful.");
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+      });
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto px-5 md:px-10 py-4">
       <div className="w-full flex justify-between items-center  bg-base-100">
@@ -84,13 +99,40 @@ const Navbar = () => {
           </div>
         </div>
         <div className=" hidden lg:flex">
-          <ul className="navLinks flex  items-center gap-5">{navLinks}</ul>
+          <ul className="navLinks flex  items-center gap-6">{navLinks}</ul>
         </div>
-        <Link to={"signIn"} className="">
-          <button className="bg-[#008FD4] hover:bg-[#0870A1] text-white py-2 px-5 rounded-md duration-300">
-            Login
-          </button>
-        </Link>
+        {user ? (
+          <div className="flex gap-4 items-center">
+            <h3 className="font-medium hidden lg:block">{user?.displayName}</h3>
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src={user?.photoURL ? user.photoURL : userImg} />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <h3 className="font-medium py-2 text-center lg:hidden">
+                  {user?.displayName}
+                </h3>
+                <button
+                  onClick={handleSignOut}
+                  className="bg-[#008FD4] hover:bg-[#0870A1] btn-sm text-white rounded-md duration-300"
+                >
+                  Sign Out
+                </button>
+              </ul>
+            </div>
+          </div>
+        ) : (
+          <Link to={"signIn"} className="">
+            <button className="bg-[#008FD4] hover:bg-[#0870A1] text-white py-2 px-5 rounded-md duration-300">
+              Sign In
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
