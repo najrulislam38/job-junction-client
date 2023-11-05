@@ -4,7 +4,7 @@ import Navbar from "./Navbar/Navbar";
 
 const Header = () => {
   const location = useLocation();
-  console.log(location);
+
   return (
     <div>
       {location?.pathname !== "/" ? (

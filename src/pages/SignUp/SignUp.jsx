@@ -1,8 +1,47 @@
 import { Link } from "react-router-dom";
 import singInImg from "../../assets/images/signin.jpg";
 import { BsGoogle } from "react-icons/bs";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const { createUser, makeProfile, signInWithGoogle } = useAuth();
+
+  const handleCreateUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        if (result.user) {
+          makeProfile(name, photo).then(() => {
+            toast.success("Sign Up successful.");
+          });
+        }
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+      });
+  };
+
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        if (result.user) {
+          toast.success("Sign In successful.");
+        }
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`);
+      });
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto px-5 md:px-10 my-7 lg:my-10 bg-gray-100 rounded-2xl ">
       <div className="w-full text-black flex gap-5 justify-between items-center py-10">
@@ -11,18 +50,18 @@ const SignUp = () => {
         </div>
         <div className="w-full lg:w-1/3 ">
           <div className="bg-white max-w-md mx-auto py-5 p-8 rounded-xl ">
-            <form>
+            <form onSubmit={handleCreateUser}>
               <h3 className="text-xl md:text-2xl  font-semibold mb-5 text-center">
                 Welcome! Sign Up Here
               </h3>
               <div className="my-1">
-                <label htmlFor="Name" className="block py-2 ml-1 font-medium">
+                <label htmlFor="name" className="block py-2 ml-1 font-medium">
                   Name
                 </label>
                 <input
-                  type="Name"
-                  name="Name"
-                  id="Name"
+                  type="name"
+                  name="name"
+                  id="name"
                   className="w-full p-3 border-2 rounded"
                   placeholder="Your Name Here"
                   required
@@ -80,7 +119,10 @@ const SignUp = () => {
             <div className="divider">Or</div>
             <div>
               <div className="flex justify-center items-center ">
-                <BsGoogle className="text-3xl text-[#008FD4] cursor-pointer hover:text-[#0870A1] " />
+                <BsGoogle
+                  onClick={handleSignInWithGoogle}
+                  className="text-3xl text-[#008FD4] cursor-pointer hover:text-[#0870A1] "
+                />
               </div>
             </div>
 
@@ -90,7 +132,7 @@ const SignUp = () => {
                 to={"/signIn"}
                 className="font-bold text-[#008FD4] hover:text-[#0870A1]"
               >
-                Sign Up
+                Sign In
               </Link>
             </p>
           </div>
