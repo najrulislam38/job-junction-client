@@ -1,9 +1,22 @@
+import { useLocation } from "react-router-dom";
+import Banner from "./Banner/Banner";
 import Navbar from "./Navbar/Navbar";
 
 const Header = () => {
+  const location = useLocation();
+  console.log(location);
   return (
     <div>
-      <Navbar></Navbar>
+      {location?.pathname !== "/" ? (
+        <div>
+          <Navbar></Navbar>
+        </div>
+      ) : (
+        <div>
+          <Navbar></Navbar>
+          <Banner></Banner>
+        </div>
+      )}
     </div>
   );
 };
