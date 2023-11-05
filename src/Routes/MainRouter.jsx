@@ -7,6 +7,7 @@ import BitRequest from "../pages/BitRequest/BitRequest";
 import MyBid from "../pages/MyBid/MyBid";
 import SingIn from "../pages/SignIn/SingIn";
 import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const MainRouter = createBrowserRouter([
   {
@@ -19,19 +20,35 @@ const MainRouter = createBrowserRouter([
       },
       {
         path: "add-job",
-        element: <AddJobs></AddJobs>,
+        element: (
+          <PrivateRoute>
+            <AddJobs></AddJobs>
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-post-job",
-        element: <MyJobs></MyJobs>,
+        element: (
+          <PrivateRoute>
+            <MyJobs></MyJobs>
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-bids",
-        element: <MyBid></MyBid>,
+        element: (
+          <PrivateRoute>
+            <MyBid></MyBid>
+          </PrivateRoute>
+        ),
       },
       {
         path: "bid-requests",
-        element: <BitRequest></BitRequest>,
+        element: (
+          <PrivateRoute>
+            <BitRequest></BitRequest>
+          </PrivateRoute>
+        ),
       },
       {
         path: "signIn",
