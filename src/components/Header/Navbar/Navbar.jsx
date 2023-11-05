@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import "./Navbar.css";
 
@@ -86,11 +86,11 @@ const Navbar = () => {
         <div className=" hidden lg:flex">
           <ul className="navLinks flex  items-center gap-5">{navLinks}</ul>
         </div>
-        <div className="">
+        <Link to={"signIn"} className="">
           <button className="bg-[#008FD4] hover:bg-[#0870A1] text-white py-2 px-5 rounded-md duration-300">
             Login
           </button>
-        </div>
+        </Link>
       </div>
     </div>
   );

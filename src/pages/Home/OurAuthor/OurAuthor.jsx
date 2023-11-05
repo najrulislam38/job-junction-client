@@ -20,7 +20,7 @@ const OurAuthor = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+        <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           {/* shop 1 */}
           <div className="shopCard bg-white p-2">
             <div className="overflow-hidden">

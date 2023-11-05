@@ -5,6 +5,8 @@ import AddJobs from "../pages/AddJobs/AddJobs";
 import MyJobs from "../pages/MyJobs/MyJobs";
 import BitRequest from "../pages/BitRequest/BitRequest";
 import MyBid from "../pages/MyBid/MyBid";
+import SingIn from "../pages/SignIn/SingIn";
+import SignUp from "../pages/SignUp/SignUp";
 
 const MainRouter = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const MainRouter = createBrowserRouter([
       {
         path: "bid-requests",
         element: <BitRequest></BitRequest>,
+      },
+      {
+        path: "signIn",
+        element: <SingIn></SingIn>,
+      },
+      {
+        path: "signUp",
+        element: <SignUp></SignUp>,
       },
     ],
   },
