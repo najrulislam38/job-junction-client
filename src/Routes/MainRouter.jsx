@@ -8,6 +8,7 @@ import MyBid from "../pages/MyBid/MyBid";
 import SingIn from "../pages/SignIn/SingIn";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import JobDetails from "../pages/JobDetails/JobDetails";
 
 const MainRouter = createBrowserRouter([
   {
@@ -49,6 +50,16 @@ const MainRouter = createBrowserRouter([
             <BitRequest></BitRequest>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "jobs/:id",
+        element: (
+          <PrivateRoute>
+            <JobDetails></JobDetails>
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) =>
+          await fetch(`http://localhost:5000/jobs/${params.id}`),
       },
       {
         path: "signIn",

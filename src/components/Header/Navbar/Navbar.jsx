@@ -63,9 +63,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navBar">
+    <div className="navBar  bg-base-100">
       <div className="max-w-screen-xl mx-auto px-5 md:px-10 py-4">
-        <div className="w-full flex justify-between items-center  bg-base-100">
+        <div className="w-full flex justify-between items-center ">
           <div className="flex items-center ">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -6,9 +6,7 @@ const JobCategory = ({ job }) => {
   //     job;
   const { _id, title, deadline, minPrice, maxPrice, description } = job;
 
-  console.log(job);
-
-  const formattedDate = new Date(deadline).toLocaleString("en-US", {
+  const formattedDate = new Date(deadline).toLocaleString("en", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -38,7 +36,7 @@ const JobCategory = ({ job }) => {
         </p>
       </div>
       <div className="my-6">
-        <Link>
+        <Link to={`jobs/${_id}`}>
           <button className="bg-[#008FD4] hover:bg-[#0870A1] text-white py-2 px-5 rounded-md duration-300">
             Bit Now
           </button>
