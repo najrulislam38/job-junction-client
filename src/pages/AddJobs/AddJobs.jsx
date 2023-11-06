@@ -1,4 +1,6 @@
+import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const AddJobs = () => {
   const { user } = useAuth();
@@ -15,6 +17,28 @@ const AddJobs = () => {
     const desc = form.description.value;
 
     console.log(title, deadline, email, category, minPrice, maxPrice, desc);
+
+    const jobInfo = {
+      title,
+      deadline,
+      email,
+      category,
+      minPrice,
+      maxPrice,
+      desc,
+    };
+
+    axios
+      .post("http://localhost:5000/jobs", jobInfo)
+      .then((res) => {
+        console.log(res);
+        if (res.data?.insertedId) {
+          toast.success("Jobs added successful");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
