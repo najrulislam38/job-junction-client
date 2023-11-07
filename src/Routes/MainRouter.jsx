@@ -9,6 +9,7 @@ import SingIn from "../pages/SignIn/SingIn";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import JobDetails from "../pages/JobDetails/JobDetails";
+import UpdateJobs from "../pages/UpdateJobs/UpdateJobs";
 
 const MainRouter = createBrowserRouter([
   {
@@ -62,6 +63,16 @@ const MainRouter = createBrowserRouter([
           await fetch(
             `https://job-junction-server.vercel.app/jobs/${params.id}`
           ),
+      },
+      {
+        path: "update-jobs/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateJobs></UpdateJobs>
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) =>
+          await fetch(`http://localhost:5000/jobs/${params.id}`),
       },
       {
         path: "signIn",

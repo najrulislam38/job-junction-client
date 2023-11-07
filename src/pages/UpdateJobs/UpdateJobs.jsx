@@ -1,13 +1,17 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-const AddJobs = () => {
+const UpdateJobs = () => {
   const { user } = useAuth();
+  const selectedJob = useLoaderData();
   const navigate = useNavigate();
 
-  const handleAddJob = (e) => {
+  const { _id, title, deadline, category, minPrice, maxPrice, desc } =
+    selectedJob;
+
+  const handleUpdateJob = (e) => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
@@ -20,7 +24,7 @@ const AddJobs = () => {
 
     // console.log(title, deadline, email, category, minPrice, maxPrice, desc);
 
-    const jobInfo = {
+    const UpdateJobInfo = {
       title,
       deadline,
       email,
@@ -31,11 +35,11 @@ const AddJobs = () => {
     };
 
     axios
-      .post("https://job-junction-server.vercel.app/jobs", jobInfo)
+      .put(`http://localhost:5000/jobs/${_id}`, UpdateJobInfo)
       .then((res) => {
-        // console.log(res);
-        if (res.data?.insertedId) {
-          toast.success("Jobs added successful");
+        // console.log(res.data);
+        if (res.data?.modifiedCount > 0) {
+          toast.success("Job Information update successful.");
           navigate("/my-post-job");
         }
       })
@@ -45,12 +49,12 @@ const AddJobs = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto px-5 md:px-10 my-8 md:my-14 lg:my-20">
+    <div className="max-w-screen-xl mx-auto px-5 md:px-10 my-8 md:my-14 lg:my-20 ">
       <div className="bg-base-100 border p-5 md:p-10 rounded-md shadow-md">
         <h1 className="text-center text-xl md:text-3xl font-semibold mb-8">
           Add Job Here
         </h1>
-        <form onSubmit={handleAddJob}>
+        <form onSubmit={handleUpdateJob}>
           <div className="grid gap-6 mb-6 md:grid-cols-2">
             <div>
               <label
@@ -63,6 +67,7 @@ const AddJobs = () => {
                 type="text"
                 id="title"
                 name="title"
+                defaultValue={title}
                 className="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Job Title"
                 required
@@ -79,6 +84,7 @@ const AddJobs = () => {
                 type="datetime-local"
                 id="deadline"
                 name="deadline"
+                defaultValue={deadline}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Doe"
                 required
@@ -110,6 +116,7 @@ const AddJobs = () => {
               <select
                 name="category"
                 id="category"
+                defaultValue={category}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               >
@@ -130,6 +137,7 @@ const AddJobs = () => {
                 type="number"
                 name="minPrice"
                 id="min-price"
+                defaultValue={minPrice}
                 placeholder="Minimum price"
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
@@ -146,6 +154,7 @@ const AddJobs = () => {
                 type="number"
                 name="maxPrice"
                 id="max-price"
+                defaultValue={maxPrice}
                 placeholder="maximum price"
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 required
@@ -163,6 +172,7 @@ const AddJobs = () => {
                 name="description"
                 rows={4}
                 id="description"
+                defaultValue={desc}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Enter Description"
                 required
@@ -184,4 +194,4 @@ const AddJobs = () => {
   );
 };
 
-export default AddJobs;
+export default UpdateJobs;

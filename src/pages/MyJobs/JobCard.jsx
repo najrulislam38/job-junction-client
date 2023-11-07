@@ -35,7 +35,7 @@ const JobCard = ({ job, handleDeletePost }) => {
         </p>
       </div>
       <div className=" flex flex-col gap-6 mt-5">
-        <Link to={`jobs/${_id}`}>
+        <Link to={`/update-jobs/${_id}`}>
           <button className="bg-[#008FD4] hover:bg-[#0870A1] text-white py-2 px-5 rounded-md duration-300">
             Update
           </button>
