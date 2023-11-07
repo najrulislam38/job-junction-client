@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import singInImg from "../../assets/images/signin.jpg";
 import { BsGoogle } from "react-icons/bs";
 import useAuth from "../../hooks/useAuth";
@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 
 const SingIn = () => {
   const { signInUser, signInWithGoogle } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSignInUser = (e) => {
     e.preventDefault();
@@ -13,12 +15,11 @@ const SingIn = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
-
     signInUser(email, password)
       .then((result) => {
         if (result.user) {
           toast.success("Sign In successful.");
+          navigate(`${location?.state ? location.state : "/"}`);
         }
       })
       .catch((error) => {
@@ -32,6 +33,7 @@ const SingIn = () => {
         console.log(result.user);
         if (result.user) {
           toast.success("Sign In successful.");
+          navigate(`${location?.state ? location.state : "/"}`);
         }
       })
       .catch((error) => {

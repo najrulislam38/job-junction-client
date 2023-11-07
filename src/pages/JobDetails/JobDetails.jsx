@@ -43,7 +43,7 @@ const JobDetails = () => {
       .post("https://job-junction-server.vercel.app/bits", bitJobInfo)
       .then((res) => {
         if (res.data?.insertedId) {
-          toast.success("You bit successful on the project.");
+          toast.success("Your bit successful on the project.");
           navigate("/my-bids");
         }
       })

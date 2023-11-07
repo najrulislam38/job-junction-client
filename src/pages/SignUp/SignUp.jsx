@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import singInImg from "../../assets/images/signin.jpg";
 import { BsGoogle } from "react-icons/bs";
 import useAuth from "../../hooks/useAuth";
@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 const SignUp = () => {
   const { createUser, makeProfile, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
 
   const handleCreateUser = (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const SignUp = () => {
         if (result.user) {
           makeProfile(name, photo).then(() => {
             toast.success("Sign Up successful.");
+            navigate("/");
           });
         }
       })
@@ -35,6 +37,7 @@ const SignUp = () => {
         console.log(result.user);
         if (result.user) {
           toast.success("Sign In successful.");
+          navigate("/");
         }
       })
       .catch((error) => {
