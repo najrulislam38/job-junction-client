@@ -5,18 +5,18 @@ import MyBidRow from "./MyBidRow";
 
 const MyBid = () => {
   const { user } = useAuth();
-  const [myBits, setMyBits] = useState([]);
+  const [myBids, setMyBids] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/bits?email=${user?.email}`).then((res) => {
-      setMyBits(res.data);
+    axios.get(`http://localhost:5000/bids?email=${user?.email}`).then((res) => {
+      setMyBids(res.data);
     });
   }, [user]);
 
   return (
-    <div className="max-w-screen-xl mx-auto px-5 md:px-10 my-8 md:mb-14 lg:mb-20">
+    <div className="max-w-screen-xl min-h-[60vh] mx-auto px-5 md:px-10 my-8 md:mb-14 lg:mb-20">
       <div>
-        {myBits?.length < 1 ? (
+        {myBids?.length < 1 ? (
           <div>
             <h1 className="text-xl md:text-3xl text-center font-semibold">
               You have do not any job Bid yet.
@@ -28,7 +28,7 @@ const MyBid = () => {
               My Bid
             </h1>
             <div>
-              <div className="overflow-x-auto shadow-md sm:rounded-lg">
+              <div className="overflow-x-auto shadow-md rounded-lg">
                 <table className="w-full text-base text-left text-gray-500 ">
                   <thead className=" text-gray-700 uppercase bg-gray-100 border ">
                     <tr>
@@ -36,7 +36,7 @@ const MyBid = () => {
                         Job Title
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Email
+                        Buyer Email
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Deadline
@@ -50,7 +50,7 @@ const MyBid = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {myBits?.map((myBid) => (
+                    {myBids?.map((myBid) => (
                       <MyBidRow key={myBid._id} myBid={myBid}></MyBidRow>
                     ))}
                     {/* <tr className="bg-white border-b ">

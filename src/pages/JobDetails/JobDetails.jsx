@@ -9,6 +9,7 @@ const JobDetails = () => {
   const navigate = useNavigate();
 
   const {
+    _id,
     title,
     deadline,
     email: buyerEmail,
@@ -25,28 +26,44 @@ const JobDetails = () => {
     minute: "2-digit",
   });
 
+  const jobUrl = `http://localhost:5000/jobs/${_id}`;
+
   const handleBitProject = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = user?.email;
-    const bitDeadline = deadline;
-    const bitPrice = form.bitPrice.value;
+    const bidDeadline = deadline;
+    const bidPrice = form.bidPrice.value;
+
     const bitJobInfo = {
       title,
       email,
       buyerEmail,
-      bitPrice,
-      bitDeadline,
+      bidPrice,
+      bidDeadline,
+    };
+
+    const updateReq = {
+      bidReqEmail: user?.email,
+      bidReqPrice: bidPrice,
     };
 
     axios
-      .post("https://job-junction-server.vercel.app/bits", bitJobInfo)
+      .post("http://localhost:5000/bids", bitJobInfo)
       .then((res) => {
         if (res.data?.insertedId) {
           toast.success("Your bit successful on the project.");
           navigate("/my-bids");
         }
       })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // for bit request.
+    axios
+      .patch(jobUrl, updateReq)
+      .then(() => {})
       .catch((error) => {
         console.log(error);
       });
@@ -84,15 +101,15 @@ const JobDetails = () => {
           >
             <div>
               <label
-                htmlFor="bitPrice"
+                htmlFor="bidPrice"
                 className="block mb-2 font-medium text-gray-900 "
               >
                 Price
               </label>
               <input
                 type="number"
-                id="bitPrice"
-                name="bitPrice"
+                id="bidPrice"
+                name="bidPrice"
                 className="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="How much your charge for this job"
                 required
@@ -100,19 +117,19 @@ const JobDetails = () => {
             </div>
             <div>
               <label
-                htmlFor="bitDeadline"
+                htmlFor="bidDeadline"
                 className="block mb-2 font-medium text-gray-900 "
               >
                 Deadline
               </label>
               <input
                 type="datetime-local"
-                id="bitDeadline"
-                name="bitDeadline"
+                id="bidDeadline"
+                name="bidDeadline"
                 defaultValue={deadline}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Doe"
-                readOnly
+                required
               />
             </div>
             <div>

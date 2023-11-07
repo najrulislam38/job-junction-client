@@ -1,0 +1,103 @@
+[
+    {
+    "title": "SEO Optimization for E-commerce Site",
+    "deadline": "2023-12-10T14:30",
+    "email": "digitalmarketing@example.com",
+    "category": "Digital Marketing",
+    "minPrice": 800,
+    "maxPrice": 1500,
+    "desc": "Looking for an expert to optimize our e-commerce website for better search engine visibility."
+    },
+    {
+    "title": "Logo Design for New Startup",
+    "deadline": "2023-12-20T10:00",
+    "email": "graphicdesign@example.com",
+    "category": "Graphic Design",
+    "minPrice": 500,
+    "maxPrice": 1200,
+    "desc": "Seeking a creative graphic designer to craft a unique and modern logo for our new startup."
+    },
+    {
+    "title": "Custom Plugin Development",
+    "deadline": "2023-12-05T15:45",
+    "email": "webdev2@example.com",
+    "category": "Web Development",
+    "minPrice": 1500,
+    "maxPrice": 4000,
+    "desc": "Require a custom plugin for a WordPress site to enhance user experience and functionality."
+    },
+    {
+    "title": "Social Media Ad Campaign Management",
+    "deadline": "2023-11-30T11:20",
+    "email": "digitalmarketing2@example.com",
+    "category": "Digital Marketing",
+    "minPrice": 1200,
+    "maxPrice": 2500,
+    "desc": "In need of a professional to manage our social media ad campaigns for increased engagement and conversions."
+    },
+    {
+    "title": "Brochure Design for Product Launch",
+    "deadline": "2023-12-25T09:10",
+    "email": "graphicdesign2@example.com",
+    "category": "Graphic Design",
+    "minPrice": 800,
+    "maxPrice": 1800,
+    "desc": "Require an eye-catching brochure design for our upcoming product launch event."
+    },
+    {
+    "title": "E-commerce Website Development",
+    "deadline": "2023-11-25T16:50",
+    "email": "webdev3@example.com",
+    "category": "Web Development",
+    "minPrice": 2000,
+    "maxPrice": 5000,
+    "desc": "Looking for an experienced developer to build a comprehensive e-commerce website from scratch."
+    },
+    {
+    "title": "Content Marketing Strategy Consultation",
+    "deadline": "2023-11-20T13:15",
+    "email": "digitalmarketing3@example.com",
+    "category": "Digital Marketing",
+    "minPrice": 1000,
+    "maxPrice": 2000,
+    "desc": "Seeking a consultation for developing an effective content marketing strategy for our brand."
+    },
+    {
+    "title": "Brand Identity Design for Rebranding",
+    "deadline": "2023-12-30T11:30",
+    "email": "graphicdesign3@example.com",
+    "category": "Graphic Design",
+    "minPrice": 1500,
+    "maxPrice": 3500,
+    "desc": "Rebranding our company and need a complete brand identity design overhaul, including logo, color scheme, and more."
+    },
+    {
+    "title": "Custom Web Application Development",
+    "deadline": "2023-11-15T14:40",
+    "email": "webdev4@example.com",
+    "category": "Web Development",
+    "minPrice": 3000,
+    "maxPrice": 8000,
+    "desc": "Need a complex web application developed for internal use. Should be user-friendly and efficient."
+    },
+    {
+    "title": "Packaging Design for New Product Line",
+    "deadline": "2023-12-10T12:00",
+    "email": "graphicdesign4@example.com",
+    "category": "Graphic Design",
+    "minPrice": 800,
+    "maxPrice": 2000,
+    "desc": "Looking for a creative packaging design that aligns with our brand identity for our upcoming product line."
+    },
+    {
+        "title": "Responsive Website Development",
+"deadline": "2023-11-16T07:27",
+"email": "sab@gmail.com",
+"category": "Web Development",
+"minPrice": 1500,
+"maxPrice": 2000,
+"desc": "Need a responsive website for a small business. Prefer modern design and easy navigation."
+    }
+    
+    ]
+    
