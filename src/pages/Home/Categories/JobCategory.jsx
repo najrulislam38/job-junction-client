@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const JobCategory = ({ job }) => {
   //   const { title, deadline, email, category, minPrice, maxPrice, description } =
   //     job;
-  const { _id, title, deadline, minPrice, maxPrice, description } = job;
+  const { _id, title, deadline, minPrice, maxPrice, desc: description } = job;
 
   const formattedDate = new Date(deadline).toLocaleString("en", {
     year: "numeric",

@@ -14,7 +14,7 @@ const JobDetails = () => {
     email: buyerEmail,
     minPrice,
     maxPrice,
-    description,
+    desc,
   } = jobDetails;
 
   const formattedDate = new Date(deadline).toLocaleString("en", {
@@ -71,8 +71,7 @@ const JobDetails = () => {
             {minPrice} $ - {maxPrice} $
           </p>
           <p>
-            <span className="text-black font-medium ">Description:</span>{" "}
-            {description}
+            <span className="text-black font-medium ">Description:</span> {desc}
           </p>
         </div>
         <div>
