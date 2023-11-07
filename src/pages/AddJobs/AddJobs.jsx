@@ -1,9 +1,11 @@
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddJobs = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handleAddJob = (e) => {
     e.preventDefault();
@@ -29,11 +31,20 @@ const AddJobs = () => {
     };
 
     axios
-      .post("http://localhost:5000/jobs", jobInfo)
+      .post("https://job-junction-server.vercel.app/jobs", jobInfo)
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // for posted database
+    axios
+      .post("https://job-junction-server.vercel.app/postedJobs", jobInfo)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data?.insertedId) {
           toast.success("Jobs added successful");
+          navigate("/my-post-job");
         }
       })
       .catch((error) => {

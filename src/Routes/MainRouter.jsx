@@ -59,7 +59,9 @@ const MainRouter = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: async ({ params }) =>
-          await fetch(`http://localhost:5000/jobs/${params.id}`),
+          await fetch(
+            `https://job-junction-server.vercel.app/jobs/${params.id}`
+          ),
       },
       {
         path: "signIn",

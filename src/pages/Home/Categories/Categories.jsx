@@ -15,7 +15,7 @@ const Categories = () => {
   const { isLoading } = useAuth();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs").then((res) => {
+    axios.get("https://job-junction-server.vercel.app/jobs").then((res) => {
       if (res?.data) {
         setJobCategories(res.data);
       }
@@ -58,8 +58,8 @@ const Categories = () => {
         </TabList>
 
         <TabPanel>
-          <div className="min-h-screen">
-            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
+          <div className="min-h-screen ">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 mt-5">
               {webCategories?.map((job) => (
                 <JobCategory key={job._id} job={job}></JobCategory>
               ))}
@@ -68,7 +68,7 @@ const Categories = () => {
         </TabPanel>
         <TabPanel>
           <div className="min-h-screen">
-            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2  mt-5">
               {digitalCategories?.map((job) => (
                 <JobCategory key={job._id} job={job}></JobCategory>
               ))}
@@ -77,7 +77,7 @@ const Categories = () => {
         </TabPanel>
         <TabPanel>
           <div className="min-h-screen">
-            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 mt-5">
               {graphicCategories?.map((job) => (
                 <JobCategory key={job._id} job={job}></JobCategory>
               ))}

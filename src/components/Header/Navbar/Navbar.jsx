@@ -63,7 +63,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navBar  bg-base-100">
+    <div className="navBar  bg-base-100 border-b">
       <div className="max-w-screen-xl mx-auto px-5 md:px-10 py-4">
         <div className="w-full flex justify-between items-center ">
           <div className="flex items-center ">
