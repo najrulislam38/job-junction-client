@@ -29,7 +29,7 @@ const JobDetails = () => {
     e.preventDefault();
     const form = e.target;
     const email = user?.email;
-    const bitDeadline = form.bitDeadline.value;
+    const bitDeadline = deadline;
     const bitPrice = form.bitPrice.value;
     const bitJobInfo = {
       title,
@@ -109,9 +109,10 @@ const JobDetails = () => {
                 type="datetime-local"
                 id="bitDeadline"
                 name="bitDeadline"
+                defaultValue={deadline}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Doe"
-                required
+                readOnly
               />
             </div>
             <div>

@@ -56,7 +56,7 @@ const MyJobs = () => {
   };
 
   return (
-    <div className="max-w-screen-xl min-h-[80vh] mx-auto px-5 md:px-10 my-8 md:mb-14 lg:mb-20">
+    <div className="max-w-screen-xl min-h-[70vh] mx-auto px-5 md:px-10 my-8 md:mb-14 lg:mb-20">
       {displayJobs?.length < 1 ? (
         <div>
           <h2 className="text-center text-xl md:text-3xl font-semibold">
