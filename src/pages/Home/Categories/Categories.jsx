@@ -9,21 +9,40 @@ import Loading from "../../../components/Loading/Loading";
 const Categories = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [jobCategories, setJobCategories] = useState([]);
-  const [jobCategory, setJobCategory] = useState("Web Development");
+  const [webCategories, setWebCategories] = useState([]);
+  const [digitalCategories, setDigitalCategories] = useState([]);
+  const [graphicCategories, setGraphicCategories] = useState([]);
   const { isLoading } = useAuth();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/jobs?category=${jobCategory}`)
-      .then((res) => {
+    axios.get("http://localhost:5000/jobs").then((res) => {
+      if (res?.data) {
         setJobCategories(res.data);
-      });
-  }, [jobCategory]);
+      }
+    });
+  }, []);
 
-  const handleSetCategory = (category) => {
-    setJobCategories([]);
-    setJobCategory(category);
-  };
+  useEffect(() => {
+    if (jobCategories) {
+      const categories = jobCategories?.filter(
+        (job) => job?.category === "Web Development"
+      );
+      setWebCategories(categories);
+    }
+
+    if (jobCategories) {
+      const categories = jobCategories?.filter(
+        (job) => job?.category === "Digital Marketing"
+      );
+      setDigitalCategories(categories);
+    }
+    if (jobCategories) {
+      const categories = jobCategories?.filter(
+        (job) => job?.category === "Graphic Design"
+      );
+      setGraphicCategories(categories);
+    }
+  }, [jobCategories]);
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -33,21 +52,15 @@ const Categories = () => {
     <div className="max-w-screen-xl mx-auto px-5 md:px-10 my-10  lg:my-20">
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
-          <Tab onClick={() => handleSetCategory("Web Development")}>
-            Web Development
-          </Tab>
-          <Tab onClick={() => handleSetCategory("Digital Marketing")}>
-            Digital Marketing
-          </Tab>
-          <Tab onClick={() => handleSetCategory("Graphic Design")}>
-            Graphic Design
-          </Tab>
+          <Tab>Web Development</Tab>
+          <Tab>Digital Marketing</Tab>
+          <Tab>Graphic Design</Tab>
         </TabList>
 
         <TabPanel>
           <div className="min-h-screen">
             <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
-              {jobCategories?.map((job) => (
+              {webCategories?.map((job) => (
                 <JobCategory key={job._id} job={job}></JobCategory>
               ))}
             </div>
@@ -56,7 +69,7 @@ const Categories = () => {
         <TabPanel>
           <div className="min-h-screen">
             <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
-              {jobCategories?.map((job) => (
+              {digitalCategories?.map((job) => (
                 <JobCategory key={job._id} job={job}></JobCategory>
               ))}
             </div>
@@ -65,7 +78,7 @@ const Categories = () => {
         <TabPanel>
           <div className="min-h-screen">
             <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
-              {jobCategories?.map((job) => (
+              {graphicCategories?.map((job) => (
                 <JobCategory key={job._id} job={job}></JobCategory>
               ))}
             </div>
