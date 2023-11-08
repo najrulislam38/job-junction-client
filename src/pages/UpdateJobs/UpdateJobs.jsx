@@ -35,7 +35,7 @@ const UpdateJobs = () => {
     };
 
     axios
-      .put(`https://job-junction-server.vercel.app/jobs/${_id}`, UpdateJobInfo)
+      .put(`http://localhost:5000/jobs/${_id}`, UpdateJobInfo)
       .then((res) => {
         // console.log(res.data);
         if (res.data?.modifiedCount > 0) {

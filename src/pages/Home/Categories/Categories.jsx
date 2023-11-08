@@ -15,11 +15,13 @@ const Categories = () => {
   const { isLoading } = useAuth();
 
   useEffect(() => {
-    axios.get("https://job-junction-server.vercel.app/jobs").then((res) => {
-      if (res?.data) {
-        setJobCategories(res.data);
-      }
-    });
+    axios
+      .get("http://localhost:5000/jobs", { withCredentials: true })
+      .then((res) => {
+        if (res?.data) {
+          setJobCategories(res.data);
+        }
+      });
   }, []);
 
   useEffect(() => {

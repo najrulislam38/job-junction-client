@@ -12,7 +12,9 @@ const MyJobs = () => {
 
   useEffect(() => {
     axios
-      .get(`https://job-junction-server.vercel.app/jobs?email=${user?.email}`)
+      .get(`http://localhost:5000/jobs?email=${user?.email}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setLoadJobs(res.data);
       });
@@ -34,7 +36,7 @@ const MyJobs = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://job-junction-server.vercel.app/jobs/${id}`)
+          .delete(`http://localhost:5000/jobs/${id}`)
           .then((res) => {
             // console.log(res.data);
             if (res.data.deletedCount > 0) {

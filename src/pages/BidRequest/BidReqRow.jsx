@@ -1,9 +1,9 @@
-import axios from "axios";
+// import axios from "axios";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const BidReqRow = ({ bidReq, handleCancelBidReq, handleAcceptBidReq }) => {
-  const [loadData, setLoadData] = useState([]);
+  // const [loadData, setLoadData] = useState([]);
 
   const {
     _id: buyer_id,
@@ -14,13 +14,11 @@ const BidReqRow = ({ bidReq, handleCancelBidReq, handleAcceptBidReq }) => {
     status,
   } = bidReq;
 
-  useEffect(() => {
-    axios
-      .get(`https://job-junction-server.vercel.app/bids?email=${bidReqEmail}`)
-      .then((res) => {
-        setLoadData(res.data);
-      });
-  }, [bidReqEmail]);
+  // useEffect(() => {
+  //   axios.get(`http://localhost:5000/bids?email=${bidReqEmail}`).then((res) => {
+  //     setLoadData(res.data);
+  //   });
+  // }, [bidReqEmail]);
 
   // console.log(loadData);
 
@@ -42,7 +40,10 @@ const BidReqRow = ({ bidReq, handleCancelBidReq, handleAcceptBidReq }) => {
         </button>
       </td>
       <td className="px-6 py-4">
-        <button className="bg-[#008FD4] hover:bg-[#0870A1] text-white rounded-md duration-300 btn-sm ">
+        <button
+          onClick={() => handleAcceptBidReq(_id)}
+          className="bg-[#008FD4] hover:bg-[#0870A1] text-white rounded-md duration-300 btn-sm "
+        >
           Accept
         </button>
       </td>

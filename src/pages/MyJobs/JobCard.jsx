@@ -34,7 +34,7 @@ const JobCard = ({ job, handleDeletePost }) => {
             : description}
         </p>
       </div>
-      <div className=" flex flex-col gap-6 mt-5">
+      <div className=" flex flex-row md:flex-col gap-6 mt-5">
         <Link to={`/update-jobs/${_id}`}>
           <button className="bg-[#008FD4] hover:bg-[#0870A1] text-white py-2 px-5 rounded-md duration-300">
             Update
@@ -42,7 +42,7 @@ const JobCard = ({ job, handleDeletePost }) => {
         </Link>
         <button
           onClick={() => handleDeletePost(_id)}
-          className="bg-red-500 hover:bg-red-800 text-white py-2 px-5 rounded-md duration-300"
+          className="w-fit bg-red-500 hover:bg-red-800 text-white py-2 px-5 rounded-md duration-300"
         >
           Delete
         </button>

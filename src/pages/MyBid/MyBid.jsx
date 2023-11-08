@@ -9,7 +9,9 @@ const MyBid = () => {
 
   useEffect(() => {
     axios
-      .get(`https://job-junction-server.vercel.app/bids?email=${user?.email}`)
+      .get(`http://localhost:5000/bids?email=${user?.email}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setMyBids(res.data);
       });
