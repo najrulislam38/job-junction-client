@@ -4,7 +4,7 @@ const MyBidRow = ({ myBid }) => {
   //   console.log(myBid);
 
   const { _id, title, email, buyerEmail, bidDeadline, status } = myBid;
-  console.log(status);
+  // console.log(status);
 
   return (
     <tr className="bg-white border ">

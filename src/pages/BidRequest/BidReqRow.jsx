@@ -2,7 +2,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-const BidReqRow = ({ bidReq, handleCancelBidReq }) => {
+const BidReqRow = ({ bidReq, handleCancelBidReq, handleAcceptBidReq }) => {
   const [loadData, setLoadData] = useState([]);
 
   const {
@@ -20,7 +20,7 @@ const BidReqRow = ({ bidReq, handleCancelBidReq }) => {
     });
   }, [bidReqEmail]);
 
-  console.log(loadData);
+  // console.log(loadData);
 
   return (
     <tr className="bg-white border ">
@@ -33,7 +33,7 @@ const BidReqRow = ({ bidReq, handleCancelBidReq }) => {
       </td>
       <td className="px-6 py-4">
         <button
-          onClick={() => handleCancelBidReq()}
+          onClick={() => handleCancelBidReq(buyer_id)}
           className="bg-red-500 hover:bg-red-800 text-white  rounded-md duration-300 btn-sm"
         >
           Reject
@@ -51,6 +51,7 @@ const BidReqRow = ({ bidReq, handleCancelBidReq }) => {
 BidReqRow.propTypes = {
   bidReq: PropTypes.object,
   handleCancelBidReq: PropTypes.func,
+  handleAcceptBidReq: PropTypes.func,
 };
 
 export default BidReqRow;

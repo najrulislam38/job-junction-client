@@ -26,7 +26,7 @@ const BidRequest = () => {
     setBitRequest(filterJobReq);
   }, [loadBitReq]);
 
-  console.log(bitRequests);
+  // console.log(bitRequests);
 
   const handleCancelBidReq = (id) => {
     console.log(id);
@@ -37,7 +37,7 @@ const BidRequest = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, Reject  it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/bids/${id}`, {
@@ -46,6 +46,39 @@ const BidRequest = () => {
             "content-type": "application/json",
           },
           body: JSON.stringify({ status: "Canceled" }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+        // axios
+        //   .patch(`http://localhost:5000/bids/${id}`)
+        //   .then((res) => console.log(res.data));
+        Swal.fire({
+          title: "Canceled!",
+          text: "Your have canceled the bit request.",
+          icon: "success",
+        });
+      }
+    });
+  };
+
+  const handleAcceptBidReq = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Accept it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/bids/${id}`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ status: "inprogress" }),
         })
           .then((res) => res.json())
           .then((data) => console.log(data));
