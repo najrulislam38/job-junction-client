@@ -26,7 +26,7 @@ const JobDetails = () => {
     minute: "2-digit",
   });
 
-  const jobUrl = `http://localhost:5000/jobs/${_id}`;
+  const jobUrl = `https://job-junction-server.vercel.app/jobs/${_id}`;
 
   const handleBitProject = (e) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ const JobDetails = () => {
     };
 
     axios
-      .post("http://localhost:5000/bids", bitJobInfo)
+      .post("https://job-junction-server.vercel.app/bids", bitJobInfo)
       .then((res) => {
         if (res.data?.insertedId) {
           toast.success("Your bit successful on the project.");

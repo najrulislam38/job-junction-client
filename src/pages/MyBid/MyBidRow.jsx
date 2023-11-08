@@ -14,7 +14,7 @@ const MyBidRow = ({ myBid }) => {
       <td className="px-6 py-4">{status ? <p>{status}</p> : <p>Pending</p>}</td>
       <td className="px-6 py-4">
         <button
-          className={`bg-[#008FD4] hover:bg-[#0870A1] text-white py-2 px-5 rounded-md duration-300 disabled:disabled disabled:opacity-60 ${
+          className={`bg-[#008FD4] hover:bg-[#0870A1] text-white py-2 px-5 rounded-md duration-300 ${
             status == "inprogress"
               ? ""
               : "btn-disabled  bg-[#0870A1] opacity-60"

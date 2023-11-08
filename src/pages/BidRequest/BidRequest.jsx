@@ -11,7 +11,7 @@ const BidRequest = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/jobs?email=${user?.email}`)
+      .get(`https://job-junction-server.vercel.app/jobs?email=${user?.email}`)
       .then((res) => {
         setLoadBitReq(res.data);
       })
@@ -40,7 +40,7 @@ const BidRequest = () => {
       confirmButtonText: "Yes, Reject  it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bids/${id}`, {
+        fetch(`https://job-junction-server.vercel.app/bids/${id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",
@@ -50,7 +50,7 @@ const BidRequest = () => {
           .then((res) => res.json())
           .then((data) => console.log(data));
         // axios
-        //   .patch(`http://localhost:5000/bids/${id}`)
+        //   .patch(`https://job-junction-server.vercel.app/bids/${id}`)
         //   .then((res) => console.log(res.data));
         Swal.fire({
           title: "Canceled!",
@@ -73,7 +73,7 @@ const BidRequest = () => {
       confirmButtonText: "Yes, Accept it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bids/${id}`, {
+        fetch(`https://job-junction-server.vercel.app/bids/${id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",
@@ -83,7 +83,7 @@ const BidRequest = () => {
           .then((res) => res.json())
           .then((data) => console.log(data));
         // axios
-        //   .patch(`http://localhost:5000/bids/${id}`)
+        //   .patch(`https://job-junction-server.vercel.app/bids/${id}`)
         //   .then((res) => console.log(res.data));
         Swal.fire({
           title: "Canceled!",
@@ -141,6 +141,7 @@ const BidRequest = () => {
                         key={bidReq._id}
                         bidReq={bidReq}
                         handleCancelBidReq={handleCancelBidReq}
+                        handleAcceptBidReq={handleAcceptBidReq}
                       ></BidReqRow>
                     ))}
                   </tbody>

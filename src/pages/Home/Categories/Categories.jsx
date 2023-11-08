@@ -50,6 +50,9 @@ const Categories = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto px-5 md:px-10 my-10  lg:my-20">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4">
+        Job Categories
+      </h2>
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
           <Tab>Web Development</Tab>

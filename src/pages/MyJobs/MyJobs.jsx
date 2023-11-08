@@ -36,14 +36,14 @@ const MyJobs = () => {
         axios
           .delete(`https://job-junction-server.vercel.app/jobs/${id}`)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.deletedCount > 0) {
               const remainingJobs = loadJobs?.filter((job) => job._id !== id);
               setDisplayJobs(remainingJobs);
 
               Swal.fire({
                 title: "Deleted!",
-                text: "Your file has been deleted.",
+                text: "Your Job post has been deleted.",
                 icon: "success",
               });
             }

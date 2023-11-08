@@ -8,9 +8,11 @@ const MyBid = () => {
   const [myBids, setMyBids] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/bids?email=${user?.email}`).then((res) => {
-      setMyBids(res.data);
-    });
+    axios
+      .get(`https://job-junction-server.vercel.app/bids?email=${user?.email}`)
+      .then((res) => {
+        setMyBids(res.data);
+      });
   }, [user]);
 
   return (
@@ -53,101 +55,6 @@ const MyBid = () => {
                     {myBids?.map((myBid) => (
                       <MyBidRow key={myBid._id} myBid={myBid}></MyBidRow>
                     ))}
-                    {/* <tr className="bg-white border-b ">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Apple MacBook Pro 17
-                      </th>
-                      <td className="px-6 py-4">Silver</td>
-                      <td className="px-6 py-4">Laptop</td>
-                      <td className="px-6 py-4">$2999</td>
-                      <td className="px-6 py-4">
-                        <a
-                          href="#"
-                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                        >
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="border-b bg-gray-50 ">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Microsoft Surface Pro
-                      </th>
-                      <td className="px-6 py-4">White</td>
-                      <td className="px-6 py-4">Laptop PC</td>
-                      <td className="px-6 py-4">$1999</td>
-                      <td className="px-6 py-4">
-                        <a
-                          href="#"
-                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                        >
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b ">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Magic Mouse 2
-                      </th>
-                      <td className="px-6 py-4">Black</td>
-                      <td className="px-6 py-4">Accessories</td>
-                      <td className="px-6 py-4">$99</td>
-                      <td className="px-6 py-4">
-                        <a
-                          href="#"
-                          className="font-medium text-blue-600  hover:underline"
-                        >
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr className="border-b bg-gray-50 ">
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Google Pixel Phone
-                      </th>
-                      <td className="px-6 py-4">Gray</td>
-                      <td className="px-6 py-4">Phone</td>
-                      <td className="px-6 py-4">$799</td>
-                      <td className="px-6 py-4">
-                        <a
-                          href="#"
-                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                        >
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        Apple Watch 5
-                      </th>
-                      <td className="px-6 py-4">Red</td>
-                      <td className="px-6 py-4">Wearables</td>
-                      <td className="px-6 py-4">$999</td>
-                      <td className="px-6 py-4">
-                        <a
-                          href="#"
-                          className="font-medium text-blue-600  hover:underline"
-                        >
-                          Edit
-                        </a>
-                      </td>
-                    </tr> */}
                   </tbody>
                 </table>
               </div>
