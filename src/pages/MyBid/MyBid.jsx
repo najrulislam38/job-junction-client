@@ -25,7 +25,7 @@ const MyBid = () => {
         ) : (
           <div className="overflow-x-auto">
             <h1 className="text-xl md:text-3xl text-center mb-5 font-semibold">
-              My Bid
+              My Bids
             </h1>
             <div>
               <div className="overflow-x-auto shadow-md rounded-lg">

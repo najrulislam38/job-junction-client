@@ -46,6 +46,7 @@ const JobDetails = () => {
     const updateReq = {
       bidReqEmail: user?.email,
       bidReqPrice: bidPrice,
+      bidReq: true,
     };
 
     axios
