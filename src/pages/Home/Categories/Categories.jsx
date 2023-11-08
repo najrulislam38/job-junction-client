@@ -1,30 +1,41 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobCategory from "./JobCategory";
-import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../components/Loading/Loading";
+import { useQuery } from "@tanstack/react-query";
 
 const Categories = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const [jobCategories, setJobCategories] = useState([]);
+  // const [jobCategories, setJobCategories] = useState([]);
   const [webCategories, setWebCategories] = useState([]);
   const [digitalCategories, setDigitalCategories] = useState([]);
   const [graphicCategories, setGraphicCategories] = useState([]);
-  const { isLoading } = useAuth();
 
-  useEffect(() => {
-    axios
-      .get("https://job-junction-server.vercel.app/jobs", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        if (res?.data) {
-          setJobCategories(res.data);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://job-junction-server.vercel.app/jobs", {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => {
+  //       if (res?.data) {
+  //         setJobCategories(res.data);
+  //       }
+  //     });
+  // }, []);
+
+  const { isPending, data: jobCategories } = useQuery({
+    queryKey: ["jobCategories"],
+    queryFn: async () => {
+      const response = await fetch(
+        "https://job-junction-server.vercel.app/jobs",
+        {
+          credentials: "include",
         }
-      });
-  }, []);
+      );
+      return response.json();
+    },
+  });
 
   useEffect(() => {
     if (jobCategories) {
@@ -48,7 +59,7 @@ const Categories = () => {
     }
   }, [jobCategories]);
 
-  if (isLoading) {
+  if (isPending) {
     return <Loading></Loading>;
   }
 

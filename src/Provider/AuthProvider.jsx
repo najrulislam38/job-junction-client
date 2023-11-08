@@ -78,8 +78,6 @@ const AuthProvider = ({ children }) => {
     };
   }, [user]);
 
-  console.log(user);
-
   const authentications = {
     user,
     isLoading,

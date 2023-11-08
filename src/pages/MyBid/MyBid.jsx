@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import MyBidRow from "./MyBidRow";
+import Swal from "sweetalert2";
 
 const MyBid = () => {
   const { user } = useAuth();
@@ -16,6 +17,43 @@ const MyBid = () => {
         setMyBids(res.data);
       });
   }, [user]);
+
+  const handleCompleteJob = (email, title, event) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Reject  it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://job-junction-server.vercel.app/jobs?email=${email}&title=${title}`,
+          {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ status: "Confirmed" }),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data?.modifiedCount > 0) {
+              event.target.disabled = true;
+            }
+            Swal.fire({
+              title: "Confirmed",
+              text: "Your Job request has been confirmed.",
+              icon: "success",
+            });
+          });
+      }
+    });
+  };
 
   return (
     <div className="max-w-screen-xl min-h-[60vh] mx-auto px-5 md:px-10 my-8 md:mb-14 lg:mb-20">
@@ -55,7 +93,11 @@ const MyBid = () => {
                   </thead>
                   <tbody>
                     {myBids?.map((myBid) => (
-                      <MyBidRow key={myBid._id} myBid={myBid}></MyBidRow>
+                      <MyBidRow
+                        key={myBid._id}
+                        myBid={myBid}
+                        handleCompleteJob={handleCompleteJob}
+                      ></MyBidRow>
                     ))}
                   </tbody>
                 </table>

@@ -30,8 +30,9 @@ const BidRequest = () => {
 
   // console.log(bitRequests);
 
-  const handleCancelBidReq = (id) => {
-    console.log(id);
+  const handleCancelBidReq = (email, title) => {
+    console.log(email);
+    console.log(title);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -42,29 +43,38 @@ const BidRequest = () => {
       confirmButtonText: "Yes, Reject  it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://job-junction-server.vercel.app/bids/${id}`, {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ status: "Canceled" }),
-        })
+        fetch(
+          `https://job-junction-server.vercel.app/bids?email=${email}&title=${title}`,
+          {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ status: "Canceled" }),
+          }
+        )
           .then((res) => res.json())
-          .then((data) => console.log(data));
-        // axios
-        //   .patch(`https://job-junction-server.vercel.app/bids/${id}`)
-        //   .then((res) => console.log(res.data));
-        Swal.fire({
-          title: "Canceled!",
-          text: "Your have canceled the bit request.",
-          icon: "success",
-        });
+          .then((data) => {
+            console.log(data);
+            if (data?.modifiedCount > 0) {
+              document
+                .getElementById("reject-btn")
+                .setAttribute("disabled", "");
+              document
+                .getElementById("accept-btn")
+                .setAttribute("disabled", "");
+            }
+            Swal.fire({
+              title: "Canceled!",
+              text: "Your have canceled the bit request.",
+              icon: "success",
+            });
+          });
       }
     });
   };
 
-  const handleAcceptBidReq = (id) => {
-    console.log(id);
+  const handleAcceptBidReq = (email, title) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -75,23 +85,33 @@ const BidRequest = () => {
       confirmButtonText: "Yes, Accept it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://job-junction-server.vercel.app/bids/${id}`, {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ status: "inprogress" }),
-        })
+        fetch(
+          `https://job-junction-server.vercel.app/bids?email=${email}&title=${title}`,
+          {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ status: "inprogress" }),
+          }
+        )
           .then((res) => res.json())
-          .then((data) => console.log(data));
-        // axios
-        //   .patch(`https://job-junction-server.vercel.app/bids/${id}`)
-        //   .then((res) => console.log(res.data));
-        Swal.fire({
-          title: "Canceled!",
-          text: "Your have canceled the bit request.",
-          icon: "success",
-        });
+          .then((data) => {
+            console.log(data);
+            if (data?.modifiedCount > 0) {
+              document
+                .getElementById("reject-btn")
+                .setAttribute("disabled", "");
+              document
+                .getElementById("accept-btn")
+                .setAttribute("disabled", "");
+            }
+            Swal.fire({
+              title: "Canceled!",
+              text: "Your have canceled the bit request.",
+              icon: "success",
+            });
+          });
       }
     });
   };
