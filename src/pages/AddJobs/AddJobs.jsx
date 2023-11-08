@@ -31,7 +31,7 @@ const AddJobs = () => {
     };
 
     axios
-      .post("http://localhost:5000/jobs", jobInfo)
+      .post("https://job-junction-server.vercel.app/jobs", jobInfo)
       .then((res) => {
         // console.log(res);
         if (res.data?.insertedId) {

@@ -16,7 +16,9 @@ const Categories = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/jobs", { withCredentials: true })
+      .get("https://job-junction-server.vercel.app/jobs", {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res?.data) {
           setJobCategories(res.data);

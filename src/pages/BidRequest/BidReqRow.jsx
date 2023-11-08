@@ -15,7 +15,7 @@ const BidReqRow = ({ bidReq, handleCancelBidReq, handleAcceptBidReq }) => {
   } = bidReq;
 
   // useEffect(() => {
-  //   axios.get(`http://localhost:5000/bids?email=${bidReqEmail}`).then((res) => {
+  //   axios.get(`https://job-junction-server.vercel.app/bids?email=${bidReqEmail}`).then((res) => {
   //     setLoadData(res.data);
   //   });
   // }, [bidReqEmail]);

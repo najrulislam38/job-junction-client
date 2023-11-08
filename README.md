@@ -1,8 +1,15 @@
-# React + Vite
+# Job Junction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live link: [Job Junction](https://job-junction-52e11.web.app/)
 
-Currently, two official plugins are available:
+## About project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Job Junction is an online marketplace website.
+
+- Job Posting: Users can post job listings for web development, digital marketing, and graphic design categories.
+
+- Job Requests: Users can Bid request specific jobs in these categories.
+
+- Job Management: Job owners can accept or reject job requests, as well as manage their job listings.
+
+- User Registration and Login: Users can register and create an account to access the website's features.

@@ -4,15 +4,16 @@ import { useEffect } from "react";
 import axios from "axios";
 import JobCard from "./JobCard";
 import Swal from "sweetalert2";
+import Loading from "../../components/Loading/Loading";
 
 const MyJobs = () => {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
   const [loadJobs, setLoadJobs] = useState([]);
   const [displayJobs, setDisplayJobs] = useState(loadJobs);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/jobs?email=${user?.email}`, {
+      .get(`https://job-junction-server.vercel.app/jobs?email=${user?.email}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -36,7 +37,7 @@ const MyJobs = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/jobs/${id}`)
+          .delete(`https://job-junction-server.vercel.app/jobs/${id}`)
           .then((res) => {
             // console.log(res.data);
             if (res.data.deletedCount > 0) {
@@ -56,6 +57,10 @@ const MyJobs = () => {
       }
     });
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="max-w-screen-xl min-h-[70vh] mx-auto px-5 md:px-10 my-8 md:mb-14 lg:mb-20">
