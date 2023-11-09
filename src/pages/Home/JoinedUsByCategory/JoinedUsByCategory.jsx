@@ -36,7 +36,7 @@ const JoinedUsByCategory = () => {
             like electronics.
           </p>
           <button className="font-medium bg-[#7CCC01] border border-[#7CCC01] hover:bg-[#0870A1] hover:border-[#0870A1] text-white py-2 px-5 rounded-md duration-300">
-            Start Shopping
+            Get Hired
           </button>
         </div>
       </div>

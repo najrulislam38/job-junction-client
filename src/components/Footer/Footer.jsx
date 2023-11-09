@@ -1,4 +1,6 @@
 import logo from "../../assets/images/logo.png";
+import { MdEmail } from "react-icons/md";
+import { FiPhoneCall } from "react-icons/fi";
 
 const Footer = () => {
   return (
@@ -16,12 +18,27 @@ const Footer = () => {
                   Junction
                 </h2>
               </div>
+              <div>
+                <div className="flex gap-3 items-center mt-8">
+                  <FiPhoneCall className="text-lg text-[#008FD4] " />
+                  <p className="text-sm font-bold text-gray-500 ">
+                    +669-XXXXXXXX
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center mt-2">
+                  <MdEmail className="text-lg text-[#008FD4] " />
+                  <p className="text-sm font-bold text-gray-500 ">
+                    jobjunction@gmail.com
+                  </p>
+                </div>
+                <div></div>
+              </div>
             </div>
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase ">
                 Job Junction
               </h2>
-              <ul className="text-gray-500  font-medium">
+              <ul className=" font-medium">
                 <li className="mb-4">
                   <a href="#" className=" hover:underline">
                     About

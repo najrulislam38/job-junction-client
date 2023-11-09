@@ -16,6 +16,22 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    if (password.length < 6) {
+      return toast.error("Password should be at least 6 characters");
+    }
+
+    // password validation for at least one capital letter.
+    if (!/(?=.*[A-Z])/.test(password)) {
+      return toast.error("Password should have at least one uppercase letter.");
+    }
+
+    // password validation for at least  one specific character.
+    if (!/(?=.*[@#$%^&+=!])/.test(password)) {
+      return toast.error(
+        "Password should have at least one specific character."
+      );
+    }
+
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
