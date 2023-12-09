@@ -2,6 +2,14 @@
 
 ## Live link: [Job Junction](https://job-junction-52e11.web.app/)
 
+## Server side Github link: [Server side Github link](https://github.com/najrulislam38/job-junction-server)
+
+## Used Technologies:
+ - React.js, Taiwlind.css, Firebase, Node, Express.js and MongoDB.
+
+## Description 
+- Job Junction is an online Job Hunting/Hiring website. A Buyer can post his/her job and the user can be bit on the jobs. Buyer can accept and reject bit proposal. 
+
 ## About project.
 
 - Job Junction is an online marketplace website.
