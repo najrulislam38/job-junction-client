@@ -1,4 +1,4 @@
-# Job Junction
+# Job Junction - A Online job searching/hunting platform.
 
 ## Live link: [Job Junction](https://job-junction-52e11.web.app/)
 
